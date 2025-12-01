@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repaso Final: Clínica Médica</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/white.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/highlight/monokai.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- ESTILOS --- */
+        body { background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); }
+        .reveal { font-family: 'Lato', sans-serif; color: #34495e; }
+        
+        .reveal h1, .reveal h2, .reveal h3 { font-family: 'Poppins', sans-serif; text-transform: none; color: #2c3e50; }
+        .reveal h2 { font-size: 1.4em; color: #2980b9; border-bottom: 2px solid #3498db; display: inline-block; padding-bottom: 5px; margin-bottom: 15px; }
+        .reveal p, .reveal li { font-size: 0.80em; line-height: 1.4; }
+        
+        /* Tarjetas y Cajas */
+        .card { background: white; padding: 15px 20px; border-radius: 10px; box-shadow: 0 5px 10px rgba(0,0,0,0.08); text-align: left; margin-bottom: 10px; }
+        .question-box { border: 3px dashed #f1c40f; padding: 20px; border-radius: 15px; background: #fffbef; color: #d35400; font-size: 1.1em; font-weight: bold; box-shadow: 0 5px 15px rgba(241, 196, 15, 0.15); text-align: center; margin-top: 20px; }
+        
+        /* Layouts */
+        .side-by-side { display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; height: 480px; }
+        .left-col { flex: 1; display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+        .right-col { flex: 1.3; display: flex; align-items: center; justify-content: center; background: white; padding: 5px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); height: 450px; position: relative; }
+        .img-full { max-height: 100%; max-width: 100%; object-fit: contain; }
+        
+        /* Tablas y Utilidades */
+        .comparison-table { width: 100%; border-collapse: collapse; font-size: 0.65em; background: white; box-shadow: 0 3px 5px rgba(0,0,0,0.05); }
+        .comparison-table th { background-color: #2c3e50; color: white; padding: 8px; }
+        .comparison-table td { border-bottom: 1px solid #ecf0f1; padding: 6px; vertical-align: top; }
+        
+        .highlight-box { background-color: #eaf2f8; border-left: 5px solid #3498db; padding: 10px 15px; border-radius: 4px; margin-top: 10px; font-size: 0.8em; }
+        .important { color: #c0392b; font-weight: bold; }
+
+        /* Badges */
+        .badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 0.5em; font-weight: bold; vertical-align: middle; margin-left: 10px; letter-spacing: 1px; text-transform: uppercase; }
+        .badge-basic { background: #27ae60; color: white; }
+        .badge-advanced { background: #c0392b; color: white; }
+
+        /* Cajas de Resumen */
+        .summary-container { display: flex; gap: 15px; margin-top: 10px; align-items: stretch; }
+        .pearl-box { flex: 1; background: #e8f8f5; border-left: 5px solid #1abc9c; padding: 15px; border-radius: 0 8px 8px 0; text-align: left; }
+        .error-box { flex: 1; background: #fdedec; border-left: 5px solid #e74c3c; padding: 15px; border-radius: 0 8px 8px 0; text-align: left; }
+        .box-title { display: block; font-weight: bold; margin-bottom: 8px; font-size: 0.9em; }
+        .pearl-box .box-title { color: #16a085; }
+        .error-box .box-title { color: #c0392b; }
+        
+        /* Listas */
+        .exam-list li { margin-bottom: 10px; }
+        .interrogatorio-list li { margin-bottom: 15px; font-size: 0.9em; color: #2c3e50; }
+        .interrogatorio-list strong { color: #2980b9; }
+
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+
+        <section data-background-color="#2c3e50">
+            <h1 style="color:white;">Repaso Final</h1>
+            <h3 style="color:#3498db;">Integración de Clínica Médica</h3>
+            <p style="color:#bdc3c7; margin-top:50px; font-size: 1.2em;">Hospital Naval</p>
+            <p style="color:#ecf0f1;">Oscar Luna Davila</p>
+            <div style="font-size: 0.7em; color: #95a5a6; margin-top: 30px;">
+                (Desliza para comenzar ➡️)
+            </div>
+        </section>
+
+        <section>
+            <section>
+                <h2>Caso 1: "Doctor, me falta el aire de golpe"</h2>
+                <div class="card">
+                    <ul>
+                        <li><strong>Paciente:</strong> Mujer, 35 años.</li>
+                        <li><strong>Antecedentes:</strong> Toma Anticonceptivos Orales (ACO).</li>
+                        <li><strong>Contexto:</strong> Viaje en micro de 18 horas (regresó ayer).</li>
+                        <li><strong>Motivo:</strong> Disnea de inicio súbito + Puntada en el pecho.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Interrogatorio Dirigido</h2>
+                <p style="font-size:0.8em; color:#7f8c8d;">Antes de tocar al paciente, ¿qué preguntamos para confirmar nuestra sospecha?</p>
+                <div class="card">
+                    <ul class="interrogatorio-list">
+			<li class="fragment"><strong>Consultamos sobre la aparición de la disnea, ¿fue súbita?</strong><br></li>
+			<li class="fragment"><strong>¿Cuáles son las características del dolor, aumenta en inspiración? </strong><br></li>
+                        <li class="fragment"><strong>¿Tuvo dolor o hinchazón en alguna pierna recientemente?</strong><br></li>
+                        <li class="fragment"><strong>¿Ha tenido tos con sangre (hemoptisis)?</strong><br></li>
+                        <li class="fragment"><strong>¿Antecedentes de cáncer o cirugías recientes?¿De invmovilización?</strong><br></li>
+			
+                    </ul>
+                </div>
+            </section>
+
+
+            <section>
+                <h2>Examen Físico Dirigido</h2>
+                <div class="card">
+                    <ul class="exam-list">
+                        <li class="fragment"><strong>Signos Vitales:</strong> Taquicardia (> 100 lpm) y SatO2 92-94% ¿Si fuera menor qué me esta diciendo?</li>
+                        <li class="fragment"><strong>Respiratorio:</strong> Dolor tipo pleurítico (puntada de costado) que aumenta al inspirar.</li>
+                        <li class="fragment"><strong>Estado Mental:</strong> Ansiedad marcada / "Sensación de muerte inminente".</li>
+                        <li class="fragment highlight-box">
+                            <strong>Miembros Inferiores:</strong> Se observa aumento de perímetro (>3cm) y empastamiento en pantorrilla izquierda.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+ <section>
+                <h2>Score de Wells y Conducta</h2>
+                <div class="card">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Criterios (Puntos)</th>
+                                <th>Probabilidad</th>
+                                <th>Conducta</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    • Clínica de TVP (3)<br>
+                                    • Otro Dx menos probable (3)<br>
+                                    • FC > 100 (1.5)<br>
+                                    • Inmovilización/Cirugía (1.5)<br>
+                                    • TVP/TEP previo (1.5)<br>
+                                    • Hemoptisis (1) / Cáncer (1)
+                                </td>
+                                <td>
+                                    <strong>Alta (>4-6):</strong><br>TEP Probable.<br><br>
+                                    <strong>Baja (<4):</strong><br>TEP Improbable.
+                                </td>
+                                <td>
+                                    <strong style="color:#c0392b;">Alta:</strong> AngioTAC directa.<br>
+                                    <em>(Si demora: Anticoagular YA)</em>.<br><br>
+                                    <strong style="color:#27ae60;">Baja:</strong> Pedir Dímero D.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section data-background-color="#fcf3cf">
+                <div class="question-box">
+                    <p>"Tiene alta probabilidad clínica (Wells Alto). ¿Le pedimos un Dímero D?"</p>
+                    <div class="fragment highlight-box important" style="background:white; border:none; margin-top:20px; color:#c0392b;">
+                        ¡NO! Si la sospecha es ALTA, vamos a la IMAGEN (AngioTAC).
+                    </div>
+                    <p class="fragment" style="font-size:0.8em; margin-top:10px;">El Dímero D solo sirve para DESCARTAR en baja probabilidad.</p>
+                </div>
+            </section>
+
+           
+
+            <section>
+                <h2>Estudios Complementarios</h2>
+                <div class="side-by-side">
+                    <div class="left-col">
+                        <div class="caption-card">
+                            <strong>AngioTAC (Gold Standard):</strong><br>Defecto de relleno (trombo) en arteria pulmonar.
+                        </div>
+                        <div class="caption-card fragment">
+                            <strong>Eco Doppler Venoso:</strong><br>Confirma la TVP en la pierna.
+                        </div>
+                    </div>
+                    <div class="right-col" style="background:black; flex-direction: column; gap: 10px;">
+                        <img src="tep_angiotc.jpg" style="height: 48%; width: auto; object-fit:contain;" alt="AngioTAC TEP">
+                        <img src="tvp_pierna.jpg" style="height: 48%; width: auto; object-fit:contain;" alt="TVP Pierna">
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Cierre del Caso 1</h2>
+                <div class="summary-container">
+                    <div class="pearl-box">
+                        <span class="box-title">💎 Perla Clínica</span>
+                        <ul>
+                            <li>Disnea súbita + Dolor pleurítico + Taquicardia = TEP hasta demostrar lo contrario.</li>
+                            <li><strong>Cambios en la saturación hablan de gravedad:</strong> por debajo de 92%, algo más grave está pasando, el VD está sufriendo o la perfusión ya no alcanza.</li>
+                        </ul>
+                    </div>
+                    <div class="error-box">
+                        <span class="box-title">☠️ Error a evitar</span>
+                        <ul>
+                            <li>Pedir Dímero D en un paciente con ALTA probabilidad.</li>
+                            <li>Olvidarse de revisar las piernas buscando la TVP (causa más frecuente de TEP).</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Caso 2: "Doctor, vomité sangre"</h2>
+                <div class="card">
+                    <ul>
+                        <li><strong>Paciente:</strong> Varón, 65 años.</li>
+                        <li><strong>Antecedentes:</strong> Gastritis crónica, Úlcera previa.</li>
+                        <li><strong>Contexto:</strong> Toma <strong>Diclofenac (AINEs)</strong> diario por lumbalgia hace 15 días.</li>
+                        <li><strong>Motivo:</strong> Hematemesis (vómito rojo) y Melena (heces negras).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Interrogatorio Dirigido</h2>
+                <div class="card">
+                    <ul class="interrogatorio-list">
+                        <li class="fragment"><strong>¿Toma alcohol? ¿Cuánto? ¿Café, mate, fumas?</strong><br></li>
+                        <li class="fragment"><strong>¿Tomó aspirina o AINEs recientemente?</strong><br></li>
+                        <li class="fragment"><strong>¿Tuvo vómitos violentos previos a la sangre?</strong><br></li>
+			<li class="fragment"><strong>¿Tenes hambre o comer te genera dolor?</strong><br></li>
+			<li class="fragment"><strong>¿Cuánta sangre vomitaste? ¿De qué color era?</strong><br> ¿Alivió el dolor vomitar?</li>
+
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Examen Físico Dirigido</h2>
+                <div class="card">
+                    <ul class="exam-list">
+                       
+                        <li class="fragment"><strong>Piel y Mucosas:</strong> Palidez generalizada, sudoración fría.</li>
+ <li class="fragment"><strong>Signos Vitales:</strong> Hipotensión (TA 90/60), Taquicardia (FC 120). <span class="important">¿Shock?</span></li>
+                        <li class="fragment"><strong>Abdomen:</strong> Dolor en epigastrio a la percusión suave. Auscultación: RHA pueden ser normales, aumentados o disminuidos dependindo el cuadro. Buscar estigmas hepáticos (dx dif).</li>
+                        <li class="fragment"><strong>Tacto Rectal:</strong> Fundamental para confirmar Melena.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section data-background-color="#fcf3cf">
+                <div class="question-box">
+                    <p>"Llega pálido e hipotenso. ¿Lo mandamos urgente a Endoscopía?"</p>
+                    <div class="fragment highlight-box important" style="background:white; border:none; margin-top:20px; color:#c0392b;">
+                        ¡NO! ¡PRIMERO ESTABILIZAR! (ABC).
+                    </div>
+                    <p class="fragment" style="font-size:0.8em; margin-top:10px;">Vías, fluidos, sangre. La endoscopía se hace compensado.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Treitz: Alta vs Baja</h2>
+                <div class="card">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Signo</th>
+                                <th>Significado Semiológico</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Hematemesis</strong></td>
+                                <td>Sangrado Alto. Color: ROJO en sangrado activo, borra de café más común en daño de mucosa.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Melena</strong></td>
+                                <td>Sangrado Alto (la sangre se digirió).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hematoquecia</strong></td>
+                                <td>Sangre fresca. Generalmente BAJA. <br><em>Ojo: HDA masiva con tránsito acelerado (shock).</em></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h2>Etiología Probable: dx y tto x VEDA</h2>
+                <div class="side-by-side">
+                    <div class="left-col">
+                        <div class="caption-card">
+                            <strong>Si toma AINEs + Antecedente de Úlcera:</strong><br>Pensar en <strong>Úlcera Péptica Sangrante</strong>.
+                        </div>
+                        <div class="caption-card fragment">
+                            <strong>Si tuviera estigmas hepáticos:</strong><br>Pensaríamos en Várices Esofágicas.
+                        </div>
+                    </div>
+                    <div class="right-col" style="background:black;">
+                        <img src="hda_veda.jpg" class="img-full" alt="Endoscopia HDA">
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Cierre del Caso 2</h2>
+                <div class="summary-container">
+                    <div class="pearl-box">
+                        <span class="box-title">💎 Perla Clínica</span>
+                        <ul>
+                            <li>Primero <strong>Estabilidad Hemodinámica</strong>, después buscar la causa.</li>
+                            <li>Sangrados crónicos presentan poca sintomatología (ej anemia).</li>
+                        </ul>
+                    </div>
+                    <div class="error-box">
+                        <span class="box-title">☠️ Error a evitar</span>
+                        <ul>
+                            <li>No hacer tacto rectal.</li>
+	                            <li>Ignorar disminución de RHA, abd en tabla, dolor difuso e intenso. <strong>Signos de perforación</strong> </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Caso 3: "Me duele mucho la panza"</h2>
+                <div class="card">
+                    <ul>
+                        <li><strong>Paciente:</strong> Mujer de 22 años.</li>
+                        <li><strong>Historia:</strong> Dolor en hipogastrio y fosa ilíaca derecha.</li>
+                        <li><strong>Trampita:</strong> Fecha de última menstruación dudosa.</li>
+                        <li><strong>Sospecha Inicial:</strong> ¿Será apendicitis? ¿Cólico renal? ¿Embarazo ectópico?"</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Interrogatorio Dirigido</h2>
+                <div class="card">
+                    <ul class="interrogatorio-list">
+                        <li class="fragment"><strong>¿Dónde empezó el dolor y hacia dónde se movió?</strong><br>(Buscando la cronología de Murphy).</li>
+                        <li class="fragment"><strong>¿Primero vino el dolor o los vómitos? </strong><br>¿Te duele toser?</li>
+	<li class="fragment"><strong>¿Tuviste fiebre? </strong><br></li>
+
+                        <li class="fragment"><strong>¿Fecha de última menstruación?</strong><br>(Descartar embarazo ectópico siempre).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Examen Físico Dirigido</h2>
+                <div class="card">
+                    <ul class="exam-list">
+                        <li class="fragment"><strong>Inspección:</strong> Paciente <strong>inmóvil</strong> (el movimiento y toser le aumenta el dolor). Facies de dolor.</li>
+                        <li class="fragment"><strong>Auscultación:</strong> RHA pasan de normales → disminuidos → abolidos (no complicada → irritación peritoneal → perforación). </li>
+                        <li class="fragment"><strong>Palpación:</strong> Defensa = contracción voluntaria refleja al dolor. Tabla = contractura involuntaria y rígida → ¡PERITONITIS!</li>
+                        <li class="fragment"><strong>Maniobras:</strong> Rebote = Blumberg (+), McBurney (+)</li>
+		<li class="fragment"><strong>Dolor:</strong> Visceral sordo y mal localizado. Somático intenso, punzante, con espasmo abdominal.</li>
+
+                    </ul>
+                </div>
+            </section>
+
+            <section data-background-color="#fcf3cf">
+                <div class="question-box">
+                    <p>"¿Qué indica la tétrada: Dolor somático + Defensa + Rebote + Silencio Auscultatorio?"</p>
+                    <div class="fragment highlight-box success" style="background:white; border:none; margin-top:20px;">
+                        IRRITACIÓN PERITONEAL (Peritonitis)
+
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>La Cronología de Murphy</h2>
+                <div class="card" style="background: #eaf2f8; border-left: 5px solid #3498db;">
+                    
+                    <ol>
+                        <li><strong>Dolor Visceral:</strong> Comienza difuso, mal localizado, usualmente en epigastrio o periumbilical.</li>
+                        <li><strong>Síntomas:</strong> Náuseas/Vómitos que siguieron a la aparición del dolor.</li>
+                        <li><strong>Dolor Parietal:</strong> El dolor baja y se localiza en FID, volviéndose somático, punzante, que empeora con movimiento, tos o saltos. </li>
+                    </ol>
+                    <div class="fragment highlight-box important" style="margin-top:15px; border-left-color: #c0392b; background-color: #fadbd8;">
+                        <strong>¡OJO!</strong> Si el dolor NO está en FID, <strong>todavía puede ser apéndice</strong>. Depende de dónde esté.
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>El Apéndice "Camaleón"</h2>
+                <div class="side-by-side">
+                    <div class="left-col">
+                        <div class="caption-card">
+                            <strong>Posiciones y Clínica Atípica:</strong>
+                            <ul style="font-size:0.9em; margin-top:5px;">
+                                <li><strong>Retrocecal:</strong> Dolor lumbar. <em>(Simula Cólico Renal)</em>.</li>
+                                <li><strong>Pélvico:</strong> Dolor hipogástrico, disuria. <em>(Simula ITU/Gineco)</em>.</li>
+                                <li><strong>Subhepático:</strong> Dolor en HD. <em>(Simula Colecistitis)</em>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="right-col" style="background:white;">
+                        <img src="apendice_posiciones.jpg" class="img-full" alt="Posiciones del Apéndice">
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Diagnóstico Diferencial</h2>
+                <div class="card">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Cuadro</th>
+                                <th>Clínica Clave</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Apendicitis</strong></td>
+                                <td>Epigastrio -> FID. Blumberg (+), McBurney (+).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Patología Ginecológica</strong></td>
+                                <td>EPI, Ectópico (Beta HCG +).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cólico Renal</strong></td>
+                                <td>Dolor lumbar irradiado. Paciente <strong>inquieto</strong>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pancreatitis</strong></td>
+                                <td>Dolor "en cinturón", vómitos.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Diverticulitis</strong></td>
+                                <td>Dolor en Fosa Ilíaca Izquierda.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h2>EC: Rx → Eco → TC </h2>
+                <div class="side-by-side">
+                    <div class="right-col" style="background:black;">
+                        <img src="abdomen_agudo.jpg" class="img-full" alt="Rx Aire Libre">
+                    </div>
+                    <div class="left-col">
+                        <div class="caption-card">
+                            <strong></strong><br>
+Eco = primera elección. (op dependiente)
+                            Rx = complicaciones.
+ <strong></strong> TC = confirmatoria o ante dudas/complicaciones
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Cierre del Caso 3</h2>
+                <div class="summary-container">
+                    <div class="pearl-box">
+                        <span class="box-title">💎 Perla Clínica</span>
+                        <ul>
+                            <li>En mujer joven con dolor abdominal bajo: <strong>Siempre pedir Beta-HCG</strong>.</li>
+                            <li>Vientre en tabla + Rebote o ausencia de RHA = Quirúrgico.</li>
+                        </ul>
+                    </div>
+                    <div class="error-box">
+                        <span class="box-title">☠️ Error Semiológico</span>
+                        <ul>
+                            <li>Tapar el dolor con analgésicos sin diagnóstico.</li>
+                            <li>Confundir Cólico Renal (inquieto) con Peritonitis (inmóvil).</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Caso 4: "Estoy cansada y deprimida"</h2>
+                <div class="card">
+                    <ul>
+                        <li><strong>Paciente:</strong> Mujer, 45 años.</li>
+                        <li><strong>Antecedentes:</strong> Tratada por <strong>Depresión y Anemia</strong> refractaria.</li>
+                        <li><strong>Motivo:</strong> Se siente hinchada y lenta, refiere intolerancia al frío, constipación.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Interrogatorio Dirigido</h2>
+                <div class="card">
+                    <ul class="interrogatorio-list">
+                        <li class="fragment"><strong>¿Ganaste peso?</strong><br></li>
+                        <li class="fragment"><strong>¿Cambios en la voz, sequedad de piel o caída del cabello?</strong><br></li>
+                        <li class="fragment"><strong>¿Tenes problemas para concentrarte o para recordar?</strong><br></li>
+
+                        <li class="fragment"><strong>¿Antecedentes de tiroides en la familia?</strong><br></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Examen Físico Dirigido</h2>
+                <div class="card">
+                    <ul class="exam-list">
+                        <li class="fragment"><strong>Facies:</strong> Abotagada, pálida, edema palpebral.</li>
+                        <li class="fragment"><strong>Palpación:</strong> Hipertrofia tiroidea.</li>
+
+                        <li class="fragment"><strong>Piel y Faneras:</strong> Piel seca, fría, áspera. Pelo quebradizo. Pérdida de cola de cejas.</li>
+                        <li class="fragment"><strong>CV:</strong> Bradicardia relativa.</li>
+                        <li class="fragment"><strong>Neuro:</strong> Reflejos osteotendinosos con fase de relajación lenta.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Dx dif: Hipotiroidismo vs SOP</h2>
+                <div class="card">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Hipotiroidismo</th>
+                                <th>SOP (Sme. Ovario Poliquístico)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Clínica</strong></td>
+                                <td>Frio, Piel Seca, Bradicardia, Edemas.</td>
+                                <td>Hirsutismo, Acné, Obesidad central, Resistencia Insulina.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ciclo</strong></td>
+                                <td>Ciclos: Primario Hipermenorrea; Central Oligo/amenorrea.</td>
+                                <td>Oligo-anovulación. INFERTILIDAD</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Clave Dx</strong></td>
+                                <td><strong style="color:#c0392b;">Perfil Tiroideo (TSH/T4L).</strong></td>
+                                <td>Hiperandrogenismo + Eco.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h2>Interpretando el Laboratorio</h2>
+                <div class="card">
+                    <div class="highlight-box" style="text-align: center; margin-bottom: 15px;">
+                        <strong>TSH Alta + T4 Libre Baja</strong><br>
+                        👉 <strong>Hipotiroidismo PRIMARIO</strong> (Falla la glándula).
+                    </div>
+                    <div class="highlight-box" style="text-align: center; background-color: #fadbd8; border-left-color: #c0392b;">
+                        <strong>TSH Baja/Normal + T4 Libre Baja</strong><br>
+                        👉 <strong>Hipotiroidismo CENTRAL</strong> (Falla hipófisis 2º / hipotálamo 3º).
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Facies Hipotiroidea</h2>
+                <div class="side-by-side">
+                    <div class="left-col">
+                        <div class="caption-card">
+                            <strong>A buscar:</strong><br>
+                            • Abotagamiento general.<br>
+                            • Edema palpebral.<br>
+                            • Piel pálida-amarillenta (carotinemia).<br>
+                            • Expresión lenta.
+                        </div>
+                    </div>
+                    <div class="right-col" style="background:white;">
+                        <img src="facies_hipotiroidea.jpg" class="img-full" alt="Hipotiroidismo">
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Cierre del Caso 4</h2>
+                <div class="summary-container">
+                    <div class="pearl-box">
+                        <span class="box-title">💎 Perla Clínica</span>
+                        <ul>
+                            <li>Mujer con depresión, anemia refractaria o dislipemia: <strong>Pedir TSH</strong>.</li>
+                            <li>Primario: TSH sube. Central: TSH no responde.</li>
+                        </ul>
+                    </div>
+                    <div class="error-box">
+                        <span class="box-title">☠️ Error Semiológico</span>
+                        <ul>
+                            <li>Tratar como depresión psiquiátrica sin descartar causa orgánica.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Caso 5: "Se me hinchan los pies"</h2>
+                <div class="card">
+                    <ul>
+                        <li><strong>Paciente:</strong> Varón, 55 años.</li>
+                        <li><strong>Motivo:</strong> Edema de miembros inferiores y sensación de pesadez.</li>
+                        <li><strong>Antecedentes:</strong> Etilista social (subestimado).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Interrogatorio Dirigido</h2>
+                <div class="card">
+                    <ul class="interrogatorio-list">
+                        <li class="fragment"><strong>¿Cuánto alcohol consume realmente?</strong><br>(Indagar tipo y cantidad diaria).</li>
+                        <li class="fragment"><strong>¿Ha tenido hepatitis o ictericia antes?</strong><br>(Factores de riesgo viral).</li>
+                        <li class="fragment"><strong>¿Le falta el aire al acostarse?</strong><br>(Descartar Insuficiencia Cardíaca como causa del edema).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Examen Físico Dirigido</h2>
+                <div class="card">
+                    <ul class="exam-list">
+                        <li class="fragment"><strong>Lo que él traía:</strong> Edema en MMII con Godet ++.</li>
+                        <li class="fragment highlight-box"><strong>El Hallazgo (al desvestirlo):</strong> Abdomen globoso, con matidez desplazable (Ascitis).</li>
+                        <li class="fragment"><strong>Piel:</strong> Estigmas: Arañas vasculares, eritema palmar, circulación colateral.</li>
+                        <li class="fragment"><strong>Endocrino:</strong> Ginecomastia / Atrofia testicular.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section data-background-color="#fcf3cf">
+                <div class="question-box">
+                    <p>"A la percusión del abdomen, ¿qué signo confirma líquido libre?"</p>
+                    <div class="fragment highlight-box success" style="background:white; border:none; margin-top:20px;">
+                        Matidez Desplazable
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Paracentesis y el GASA</h2>
+                <div class="card">
+                    <p>GASA = Albúmina Suero - Albúmina Ascitis</p>
+                    
+                    <table class="comparison-table" style="margin-top:20px;">
+                        <thead>
+                            <tr>
+                                <th style="background:#27ae60;">GASA ≥ 1.1 (Hipertensión Portal)</th>
+                                <th style="background:#c0392b;">GASA < 1.1 (Inflamatorio/Exudado)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    • <strong>Cirrosis Hepática</strong>.<br>
+                                    • Insuficiencia Cardíaca.<br>
+                                    • Budd-Chiari.
+                                </td>
+                                <td>
+                                    • <strong>Carcinomatosis (Cáncer)</strong>.<br>
+                                    • Tuberculosis Peritoneal.<br>
+                                    • Pancreatitis.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h2>La Ecuación Clínica</h2>
+                <div class="side-by-side">
+                    <div class="right-col" style="background:black;">
+                        <img src="ascitis.jpg" class="img-full" alt="Ascitis y Estigmas">
+                    </div>
+                    <div class="left-col">
+                        <div class="caption-card">
+                            <strong>En la imagen:</strong><br>
+                            Se observa <strong>Circulación Colateral</strong> tipo "Cabeza de Medusa".
+                        </div>
+                        <div class="highlight-box">
+                            Ascitis + Circulación Colateral + Arañas Vasculares =<br>
+                            <strong style="color:#c0392b;">Hipertensión Portal</strong><br> (hasta demostrar lo contrario).
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Cierre del Caso 5</h2>
+                <div class="summary-container">
+                    <div class="pearl-box">
+                        <span class="box-title">💎 Perla Clínica</span>
+                        <ul>
+                            <li>El edema de MMII puede ser el primer síntoma de cirrosis (hipoalbuminemia).</li>
+                            <li>GASA ≥ 1.1 confirma que la causa es presión (HTP).</li>
+                        </ul>
+                    </div>
+                    <div class="error-box">
+                        <span class="box-title">☠️ Error a evitar</span>
+                        <ul>
+                            <li>No desvestir al paciente (perderse la ascitis).</li>
+                            <li>No punzar una ascitis nueva.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </section>
+<section>
+            <h2>📲 Juguemos con casos </h2>
+            <div class="side-by-side" style="height:auto;">
+                <div class="left-col">
+                    <div class="card">
+                        <p><strong>Url:</strong></p>
+                        <p>
+                            <a href="https://repsemio.netlify.app/" target="_blank">
+                                https://repsemio.netlify.app/
+                            </a>
+                        </p>
+                        <p style="font-size:0.8em;">
+                            Un par de casos clínicos para practicar en casa                         </p>
+                        <p style="font-size:0.8em; margin-top:10px;">
+                        </p>
+                    </div>
+                </div>
+                <div class="right-col" style="height:320px;">
+                   
+                    <img src="qr_repsemio.png" alt="QR repsemio.netlify.app" class="img-full">
+                </div>
+            </div>
+        </section>
+
+
+
+        <section data-background-color="#2c3e50">
+            <h2 style="color:#f1c40f; border-bottom: none;">Para llevar a casa...</h2>
+            <div class="card" style="margin-top: 30px;">
+                <ol style="font-size: 1.1em; line-height: 1.8;">
+                    <li class="fragment">
+                        <strong style="color:#2980b9;">La Clínica es Soberana:</strong>
+                        <br><span style="color:#7f8c8d; font-size:0.8em;">Tratamos pacientes, no imágenes ni laboratorios.</span>
+                    </li>
+                    <li class="fragment">
+                        <strong style="color:#2980b9;">Si tiene cuatro patas, mueve la cola y ladra... es un perro:</strong>
+                        <br><span style="color:#7f8c8d; font-size:0.8em;">La probabilidad manda: descartá lo común antes de buscar lo raro.</span>
+                    </li>
+                    <li class="fragment">
+                        <strong style="color:#2980b9;">El ojo no ve lo que la mente no sabe:</strong>
+                        <br><span style="color:#7f8c8d; font-size:0.8em;">Para eso estamos acá: para sistematizar procesos.</span>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section data-background-color="#2c3e50">
+            <h1 style="color:white;">¡Muchas Gracias!</h1>
+            <h3 style="color:#3498db;">¿Dudas o Preguntas?</h3>
+            <div style="margin-top: 50px;">
+                <p style="color:#bdc3c7; font-size: 0.6em;">
+                    📩 lunadavilaoscar@gmail.com
+                </p>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/highlight/highlight.min.js"></script>
+<script>
+    // Inicialización
+    Reveal.initialize({
+        hash: false, 
+        plugins: [ RevealHighlight ],
+        slideNumber: 'c/t',
+        transition: 'convex', 
+        backgroundTransition: 'fade'
+    });
+</script>
+</body>
+</html>
